@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Daily Text</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="text"></div>
+
+    <script>
+        const texts = [
+            "Кожен крок до мети — це крок до кращої версії тебе.", 
+            "Не бійся помилок — вони ведуть до великих відкриттів.", 
+            "Твоя сила не в тому, скільки разів ти падаєш, а в тому, скільки разів піднімаєшся.", 
+            "Щоб змінити світ, почни із зміни себе.", 
+            "Мріяти — це перший крок до здійснення. Діяти — наступний.",
+            "Ідеального моменту не існує. Створи його.", 
+            "Твоя впертість — це секрет твого успіху.", 
+            "Кожен день — це нова можливість стати кращою.", 
+            "Ті, хто вірить у себе, здатні змінити все.", 
+            "Кожен день — це шанс зробити невеликий крок до великої мети.",
+            "Перемога починається з рішучості не здаватися.", 
+            "Ти можеш більше, ніж думаєш. Повір у себе!", 
+            "Лише той, хто не боїться йти вперед, досягає вершини.", 
+            "Справжня сила — в твоїй рішучості.", 
+            "Всі великі досягнення починалися з маленьких кроків.",
+            "Твоя робота — це лише відображення того, як ти ставишся до себе.",
+            "Успіх — це результат твоїх зусиль, а не везіння.", 
+            "Потрібно не просто мріяти, а й працювати над своїми мріями.", 
+            "Не бійся почати з нуля — саме так народжуються великі ідеї.",
+            "Рухайся вперед, навіть якщо ти не бачиш кінця шляху.", 
+            "Якщо ти не боїшся почати, ти вже на півдорозі до успіху", 
+            "Кожен день дає нову можливість для росту.", 
+            "Якщо ти хочеш змінити світ, почни з маленьких змін у своєму житті.", 
+            "Твоя рішучість — це твоя суперсила.",
+            "Не обирай шлях легший, обирай той, що веде до твоїх мрій.",
+            "Успіх не чекає тих, хто сумнівається в собі.", 
+            "Найкращий час для дії — зараз.", 
+            "Ти сама створюєш свої можливості.",
+            "Вся сила в твоїй впертості та сміливості.", 
+            "Те, що ти сьогодні робиш, створює твоє завтра.", 
+            "Якщо ти сьогодні зробиш маленький крок, завтра побачиш велику відстань.", 
+            "Великі досягнення починаються з маленьких змін.", 
+            "Твоя мрія — це карта, а рішучість — шлях до її реалізації.",
+            "Якщо хочеш бути кращим, роби більше, ніж інші", 
+            "Твоя здатність пройти через труднощі робить тебе сильнішою.", 
+            "Пам'ятай: ніщо не дається легко, але все можливе.", 
+            "Великий успіх починається з маленької сміливості.", 
+            "Тільки той, хто не зупиняється, йде вперед.",
+            "Кожен твій день — це новий шанс досягти більше.",  
+            "Не бігай за успіхом, створюй його своїми руками.", 
+            "Рішення сьогодні формують твоє завтра.",
+            "Іди туди, де боїшся — там чекає твоя перемога.", 
+            "Життя — це серія виборів, обирай сміливо!", 
+            "Найкраща інвестиція — це інвестиція в себе.", 
+            "Велика мета починається з маленького кроку.", 
+            "Час, який ти витрачаєш на сумніви, краще витратити на дії.", 
+            "Щоб виграти, треба почати грати.",
+            "Ти можеш змінити все, якщо не боїшся змін.", 
+            "Кожен день — це шанс зробити свій найкращий вибір.", 
+            "Якщо ти хочеш чогось досягти, відпусти свої страхи.", 
+            "Ти створюєш своє майбутнє кожним своїм кроком сьогодні.",
+        ];
+
+        const backgrounds = [
+            'images/background1.jpg', 
+            'images/background2.jpg', 
+            'images/background3.jpg', 
+            'images/background4.jpg', 
+            'images/background5.jpg', 
+            'images/background6.jpg', 
+            'images/background7.jpg', 
+            'images/background8.jpg',
+            'images/background9.jpg', 
+            'images/background10.jpg', 
+            'images/background11.jpg', 
+            'images/background12.jpg', 
+            'images/background13.jpg', 
+            'images/background14.jpg', 
+            'images/background15.jpg'
+        ];
+
+        function getRandomText() {
+            const today = new Date().toISOString().slice(0, 10); // Поточна дата у форматі YYYY-MM-DD
+            const savedData = JSON.parse(localStorage.getItem('dailyText'));
+
+            if (savedData && savedData.date === today) {
+                console.log("Текст для сьогодні вже збережено.");
+                return savedData.text;
+            } else {
+                const randomIndex = Math.floor(Math.random() * texts.length);
+                const randomText = texts[randomIndex];
+                console.log("Новий текст: ", randomText);
+                localStorage.setItem('dailyText', JSON.stringify({ date: today, text: randomText }));
+                return randomText;
+            }
+        }
+
+        function getRandomBackground() {
+            const today = new Date().toISOString().slice(0, 10); // Поточна дата у форматі YYYY-MM-DD
+            const savedBackground = JSON.parse(localStorage.getItem('dailyBackground'));
+
+            if (savedBackground && savedBackground.date === today) {
+                console.log("Фон для сьогодні вже збережено.");
+                return savedBackground.url;
+            } else {
+                const randomIndex = Math.floor(Math.random() * backgrounds.length);
+                const randomBackground = backgrounds[randomIndex];
+                console.log("Новий фон: ", randomBackground);
+                localStorage.setItem('dailyBackground', JSON.stringify({ date: today, url: randomBackground }));
+                return randomBackground;
+            }
+        }
+
+        function displayText() {
+            const textElement = document.getElementById("text");
+            textElement.textContent = getRandomText();
+        }
+
+        function setBackground() {
+            const background = getRandomBackground();
+            console.log("Задаємо фон: ", background);
+            document.body.style.backgroundImage = `url(${background})`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundAttachment = 'fixed';
+        }
+
+        displayText();
+        setBackground();
+
+        const now = new Date();
+        const timeUntilMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now;
+        setTimeout(() => {
+            displayText();
+            setBackground();
+            setInterval(() => {
+                displayText();
+                setBackground();
+            }, 24 * 60 * 60 * 1000); // Оновлення кожні 24 години
+        }, timeUntilMidnight);
+    </script>
+</body>
+</html>

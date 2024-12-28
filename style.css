@@ -1,0 +1,61 @@
+/* Основні стилі для body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Стилі для тексту */
+#text {
+    text-align: center;
+    font-size: 2rem; /* Розмір шрифту для великих екранів */
+    color: #333;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: rgba(192, 192, 192, 0.8); /* Напівпрозорий фон */
+    animation: fadeIn 3s forwards;
+    max-width: 90%; /* Максимальна ширина тексту */
+    box-sizing: border-box;
+    opacity: 0; /* Початкове значення непрозорості */
+}
+
+/* Анімація для плавного з'явлення */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Медіа-запити для адаптації на різних пристроях */
+
+/* Для планшетів та екранів з шириною до 1024px */
+@media (max-width: 1024px) {
+    #text {
+        font-size: 1.8rem; /* Зменшуємо розмір шрифту */
+        padding: 15px;
+    }
+}
+
+/* Для мобільних пристроїв та екранів до 768px */
+@media (max-width: 768px) {
+    #text {
+        font-size: 1.4rem; /* Ще зменшуємо шрифт */
+        padding: 10px;
+    }
+}
+
+/* Для дуже маленьких екранів до 480px (наприклад, смартфони) */
+@media (max-width: 480px) {
+    #text {
+        font-size: 1.4rem; /* Зменшуємо шрифт ще більше */
+        padding: 8px;
+        max-width: 95%; /* Текст може займати більшу ширину */
+    }
+}
